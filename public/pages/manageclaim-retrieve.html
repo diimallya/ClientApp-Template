@@ -1,0 +1,75 @@
+
+<div class="jumbotron "
+	style="padding-top: 70px; padding-left: 25px; padding-bottom: 0px; padding-right: 25px; height: 722px;">
+
+
+	<div class="container">
+		<form class="navbar-form" role="search">
+			<label for="SearchByClaim">Search By Claim Id:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<div class="input-group">
+				
+				<input type="text" class="form-control" placeholder="Claim_ID"
+					name="srch-term" id="srch-term" ng-model="inpClaimId">
+				<div class="input-group-btn">
+					<button class="btn btn-default" type="button" data-toggle="modal" data-target="#myModal-retrieve"
+						ng-click="searchClaim();">
+						<i class="glyphicon glyphicon-search"></i>
+					</button>
+				</div>
+			</div>
+			<br>
+			<br>
+		
+			<label for="SearchByClaimant">Search By Claimant Id:</label>&nbsp;
+			<div class="input-group">
+
+				<input type="text" class="form-control" placeholder="Claimant_ID"
+					name="srch-term_2" id="srch-term_2" ng-model="inpClaimantId">
+				<div class="input-group-btn">
+					<button class="btn btn-default" type="button" data-toggle="modal" data-target="#myModal-retrieve"
+						ng-click="searchClaimByClaimant();">
+						<i class="glyphicon glyphicon-search"></i>
+					</button>
+				</div>
+			</div>
+			
+		</form>
+		
+		
+		<!-- Trigger the modal with a button -->
+
+<!-- Modal For Displaying the results-->
+<div id="myModal-retrieve" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Search Result</h4>
+      </div>
+      <div class="modal-body" >
+      <div class="container" id="claimRetrieveResult">
+      	<!-- <h4>Firstname:</h4> <h5>{{partner[0].firstname}}</h5>
+      	<h4>Lastname:</h4> {{partner[0].lastname}}
+      	<h4>EmailId:</h4> {{partner[0].emailid}}
+      	<h4>Organization Name:</h4> {{partner[0].organizationname}} -->
+
+      </div>
+      </div>  
+    
+      
+      
+  
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+	</div>
+
+</div>
+

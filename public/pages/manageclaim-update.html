@@ -1,0 +1,137 @@
+
+<div class="jumbotron "
+	style="padding-top: 70px; padding-left: 25px; padding-bottom: 0px; padding-right: 25px; height: 770px;">
+
+
+	<div class="container">
+		<form class="form-group" role="form">
+		
+		<!-- START: Retrieve Partner Info For Update -->
+					<label for="SearchByEmail">Search By Email Id:</label>
+			<div class="input-group">
+
+				<input type="text" class="form-control" placeholder="SearchByEmail"
+					name="srch-term" id="srch-term" ng-model="inpEmailId">
+				<div class="input-group-btn">
+					<button class="btn btn-default" type="button" ng-click="searchForUpdate()" data-toggle="modal" data-target="#myModal-update" >
+						<i class="glyphicon glyphicon-search"></i>
+					</button>
+				</div>
+			</div>
+		<!-- END:  Retrieve Partner Info For Update-->
+		
+			<button class="btn btn-primary btn-lg btn-block" data-toggle="collapse" data-target="#personalinfo_section">Personal Information</button>
+			<div id="personalinfo_section" class="collapse">
+				<div class="panel-group">
+					<div class="panel panel-primary">
+						<div class="panel-body">
+							
+							<label for="firstname">FirstName:</label> 
+								<input class="form-control" id="firstname" type="text" ng-model="partner[0].firstname"> 
+							<label for="lastname">LastName:</label> 
+								<input class="form-control" id="lastname" type="text" ng-model="partner[0].lastname"> 
+							<label for="email">Email:</label>
+								<input class="form-control" id="email" type="text" ng-model="partner[0].emailid" > 
+							<label for="organizationname">OrganizationName:</label> 
+								<input class="form-control" id="organizationname" type="text" ng-model="partner[0].organizationname">
+							<label for="officetelephone">OfficeTelphone:</label> 
+								<input class="form-control" id="officetelephone" type="text" ng-model="partner[0].officephone"> 
+							<label for="mobiletelephone">MobileTelephone:</label> 
+								<input class="form-control" id="mobiletelephone" type="text" ng-model="partner[0].mobilephone"> 
+							<label for="gender">Gender:</label> 
+								<select class="form-control" id="gender" type="text" ng-model="partner[0].gender">
+									<option>Select the Gender</option>
+									<option>Male</option>
+									<option>Female</option>
+								</select> 
+							<label for="dob">DateOfBirth:</label>
+								<div class="form-group">
+									<div class='input-group date'>
+										<input type='text' id="datepicker" class="form-control"  ng-model="partner[0].dateofbirth" > 
+											<span class="input-group-addon"> 
+												<span class="glyphicon glyphicon-calendar"></span>
+											</span>
+									</div>
+								</div>
+
+							
+
+							<script>
+  								$(function() {
+    							$( '#datepicker' ).datepicker();
+  								});
+  							</script>
+
+
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+			</form>
+
+			<!-- Address Section -->
+			<form class="form-group" role="form">
+				<button class="btn btn-primary btn-lg btn-block" data-toggle="collapse" data-target="#address_section">Address Information</button>
+				<div id="address_section" class="collapse">
+					<div class="panel-group">
+						<div class="panel panel-primary">
+							<div class="panel-body">
+								<label for="addresstype">AddressType:</label> 
+									<select class="form-control" id="addresstype" ng-model="partner[0].addresses[0].addresstype">
+										<option>Select the AddressType</option>
+										<option>Office</option>
+										<option>Personal</option>
+									</select>
+								<label for="addressline1">Addressline2:</label> 
+									<input class="form-control" id="addressline1" type="text" ng-model="partner[0].addresses[0].addressline1"> 
+								<label for="addressline2">Addressline2:</label> 
+									<input class="form-control" id="addressline2" type="text" ng-model="partner[0].addresses[0].addressline2"> 
+								<label for="city">City:</label> 
+									<input class="form-control" id="city" type="text" ng-model="partner[0].addresses[0].city"> 
+								<label for="state">State:</label> 
+									<input class="form-control" id="state" type="text" ng-model="partner[0].addresses[0].state"> 
+								<label for="country">Country:</label> 
+									<input class="form-control" id="country" type="text" ng-model="partner[0].addresses[0].country"> 
+								<label for="pin">Pincode:</label> 
+									<input class="form-control" id="pin" type="text" ng-model="partner[0].addresses[0].pin"> 
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+			 <button class="btn btn-lg btn-primary btn-block"  type="button" data-toggle="modal" data-target="#myModal-update" 
+			 ng-click="updatePartner();">Update Partner Info</button>
+			 
+			 
+			 
+<!-- Modal For Displaying the results of the Create Action-->
+<div id="myModal-update" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Partner Info Update</h4>
+      </div>
+      <div class="modal-body" >
+      <div class="container" id="partnerUpdateResult">
+  <!-- Content for this area will be pushed from controller using innerhtml -->
+
+      </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+	</div>
+
+</div>
+

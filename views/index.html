@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+
+<!-- define angular app -->
+
+<html ng-app="ClientApp">
+
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sample ClientApp</title>
+
+<!-- load jquery related css and .js file before bootstrap and angular Load Core and then UI -->
+<link href="css/jquery-ui.css" rel="stylesheet" />
+<script src="jslib/jquery.min.js"></script>
+<script src="jslib/jquery-ui.js"></script>
+
+  
+ <!-- Now Bootstrap related css and js -->
+ <link href="css/bootstrap.min.css" rel="stylesheet" />
+ <link href="css/font-awesome.min.css" rel="stylesheet" />
+ <script src="jslib/bootstrap.min.js"></script>
+
+ <!-- Now Angular related css and js  -->
+  <script src="jslib/angular.min.js"></script>
+  <script src="jslib/angular-route.min.js"></script>
+
+ <!-- My custom css and js -->
+  <link href="css/mycss.css" rel="stylesheet" />
+  
+    	
+  	<!--  Angular App related scripts -->
+		<script src="js/ClientApp.js"></script>
+		<script src="js/ClientApp-services.js"></script>
+		<script src="js/ClientApp-controllers.js"></script>
+		<script src="js/ClientApp-routes.js"></script>
+		
+		
+		<script src="js/myAPI_Details.js"></script>
+		<script src="js/datamodel.js"></script>
+</head>
+
+<body id="bodyId">
+
+ <!-- New Header Start -->
+	 <div id="header_id" >
+	 <nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="menu-logo" href="#"> 
+				<img
+					src="img/bluemix-logo.png"
+					alt="Bluemix" title="IBM Bluemix" width="55" height="55">
+				</a>
+			</div>
+
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul id="menu-main-menu" class="nav navbar-nav navbar-right">
+				      
+				      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" >Claims <span class="caret"></span></a>
+				        <ul class="dropdown-menu">
+				          <li><a href="#manageclaim-create">(C)reate Claim</a></li>
+				          <li><a href="#manageclaim-retrieve">(R)etrieve Claim</a></li>
+				          <li><a href="#manageclaim-update">(U)pdate Claim</a></li>
+				        </ul>
+				      </li>
+				
+					<li id="About_Us_id" class="menu-item menu-item-type-post_type menu-item-object-page">
+						<a href="#about">About Us</a>
+					</li>
+					<li id="Contact_Us_id" class="menu-item menu-item-type-post_type menu-item-object-page">
+						<a href="#contact">Contact Us</a>
+					</li>
+					<li id="Login_id" class="menu-item menu-item-type-post_type menu-item-object-page">
+						<a href="#login">Login</a>
+					</li>
+				</ul>
+			</div>
+		
+	</nav>
+	 
+	 </div> 
+
+<!-- New Header End -->
+  <div id="main">
+
+  
+
+    <!-- angular templating -->
+
+        <!-- this is where content will be injected -->
+
+    <div class=“ng-cloak” ng-view></div>
+
+    
+
+  </div>
+
+  
+
+ <!-- Footer Start -->
+
+ <div id="footer_id">
+	<nav class="navbar navbar-inverse navbar-fixed-bottom">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+			</div>
+
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul id="menu-main-menu" class="nav navbar-nav navbar-right">
+					<li id="footer_PlaceHolder-1_id"
+						class="menu-item menu-item-type-post_type menu-item-object-page"><a
+						href="">IBM Corporation</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</div>  
+
+ <!-- Footer End -->
+
+  
+
+</body>
+ 
+
+</html>
+
+
+
+                
+
