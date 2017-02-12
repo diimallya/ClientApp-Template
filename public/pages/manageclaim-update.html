@@ -6,12 +6,12 @@
 	<div class="container">
 		<form class="form-group" role="form">
 		
-		<!-- START: Retrieve Partner Info For Update -->
-					<label for="SearchByEmail">Search By Email Id:</label>
+		<!-- START: Retrieve Claim Info For Update -->
+					<label for="SearchByClaim">Search By Claim Id:</label>
 			<div class="input-group">
 
 				<input type="text" class="form-control" placeholder="SearchByEmail"
-					name="srch-term" id="srch-term" ng-model="inpEmailId">
+					name="srch-term" id="srch-term" ng-model="inpClaimId">
 				<div class="input-group-btn">
 					<button class="btn btn-default" type="button" ng-click="searchForUpdate()" data-toggle="modal" data-target="#myModal-update" >
 						<i class="glyphicon glyphicon-search"></i>
@@ -20,48 +20,22 @@
 			</div>
 		<!-- END:  Retrieve Partner Info For Update-->
 		
-			<button class="btn btn-primary btn-lg btn-block" data-toggle="collapse" data-target="#personalinfo_section">Personal Information</button>
-			<div id="personalinfo_section" class="collapse">
+			<button class="btn btn-primary btn-lg btn-block" data-toggle="collapse" data-target="#claiminfo_section">Claim Information</button>
+			<div id="claiminfo_section" class="collapse">
 				<div class="panel-group">
 					<div class="panel panel-primary">
 						<div class="panel-body">
 							
-							<label for="firstname">FirstName:</label> 
-								<input class="form-control" id="firstname" type="text" ng-model="partner[0].firstname"> 
-							<label for="lastname">LastName:</label> 
-								<input class="form-control" id="lastname" type="text" ng-model="partner[0].lastname"> 
-							<label for="email">Email:</label>
-								<input class="form-control" id="email" type="text" ng-model="partner[0].emailid" > 
-							<label for="organizationname">OrganizationName:</label> 
-								<input class="form-control" id="organizationname" type="text" ng-model="partner[0].organizationname">
-							<label for="officetelephone">OfficeTelphone:</label> 
-								<input class="form-control" id="officetelephone" type="text" ng-model="partner[0].officephone"> 
-							<label for="mobiletelephone">MobileTelephone:</label> 
-								<input class="form-control" id="mobiletelephone" type="text" ng-model="partner[0].mobilephone"> 
-							<label for="gender">Gender:</label> 
-								<select class="form-control" id="gender" type="text" ng-model="partner[0].gender">
-									<option>Select the Gender</option>
-									<option>Male</option>
-									<option>Female</option>
-								</select> 
-							<label for="dob">DateOfBirth:</label>
-								<div class="form-group">
-									<div class='input-group date'>
-										<input type='text' id="datepicker" class="form-control"  ng-model="partner[0].dateofbirth" > 
-											<span class="input-group-addon"> 
-												<span class="glyphicon glyphicon-calendar"></span>
-											</span>
-									</div>
-								</div>
-
-							
-
-							<script>
-  								$(function() {
-    							$( '#datepicker' ).datepicker();
-  								});
-  							</script>
-
+							<label for="claimid">ClaimId:</label> 
+								<input class="form-control" id="claimid" type="text" ng-model="claim.claimid"> 
+							<label for="claimdate">ClaidDate:</label> 
+								<input class="form-control" id="claimdate" type="text" ng-model="claim.claimdate"> 
+							<label for="claimdesription">ClaimDescription:</label>
+								<input class="form-control" id="claimdesription" type="text" ng-model="claim.claimdescription" > 
+							<label for="claimedamount">ClaimedAmount:</label> 
+								<input class="form-control" id="claimedamount" type="text" ng-model="claim.claimedamount"> 
+							<label for="approvedamount">ApprovedAmount:</label> 
+								<input class="form-control" id="approvedamount" type="text" ng-model="claim.approvedamount"> 						
 
 						</div>
 					</div>
@@ -70,40 +44,80 @@
 				</div>
 			</div>
 			</form>
-
-			<!-- Address Section -->
-			<form class="form-group" role="form">
-				<button class="btn btn-primary btn-lg btn-block" data-toggle="collapse" data-target="#address_section">Address Information</button>
-				<div id="address_section" class="collapse">
+			
+<form class="form-group" role="form">
+				<button class="btn btn-primary btn-lg btn-block" data-toggle="collapse" data-target="#claimant_section">Claimant Information</button>
+				<div id="claimant_section" class="collapse">
 					<div class="panel-group">
 						<div class="panel panel-primary">
 							<div class="panel-body">
-								<label for="addresstype">AddressType:</label> 
-									<select class="form-control" id="addresstype" ng-model="partner[0].addresses[0].addresstype">
-										<option>Select the AddressType</option>
-										<option>Office</option>
-										<option>Personal</option>
-									</select>
-								<label for="addressline1">Addressline2:</label> 
-									<input class="form-control" id="addressline1" type="text" ng-model="partner[0].addresses[0].addressline1"> 
-								<label for="addressline2">Addressline2:</label> 
-									<input class="form-control" id="addressline2" type="text" ng-model="partner[0].addresses[0].addressline2"> 
-								<label for="city">City:</label> 
-									<input class="form-control" id="city" type="text" ng-model="partner[0].addresses[0].city"> 
-								<label for="state">State:</label> 
-									<input class="form-control" id="state" type="text" ng-model="partner[0].addresses[0].state"> 
-								<label for="country">Country:</label> 
-									<input class="form-control" id="country" type="text" ng-model="partner[0].addresses[0].country"> 
-								<label for="pin">Pincode:</label> 
-									<input class="form-control" id="pin" type="text" ng-model="partner[0].addresses[0].pin"> 
+								<label for="claimantid">ClaimantId:</label> 
+								<input class="form-control" id="claimantid" type="text" ng-model="claim.claimantdetails.claimantid">
+								<label for="claimantname">ClaimantName:</label> 
+								<input class="form-control" id="claimantname" type="text" ng-model="claim.claimantdetails.claimantname">					
+							
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+			
+			<form class="form-group" role="form">
+				<button class="btn btn-primary btn-lg btn-block" data-toggle="collapse" data-target="#claimStatus_section">Claim Status Information</button>
+				<div id="claimStatus_section" class="collapse">
+					<div class="panel-group">
+						<div class="panel panel-primary">
+							<div class="panel-body">
+								<label for="claimstatus">ClaimStatus:</label> 
+								<input class="form-control" id="claimstatus" type="text" ng-model="claim.claimstate.claimstatus"> 
+							
+							<label for="claimstatechanged">ClaimStatusChangedDate:</label> 
+								<div class="form-group">
+									<div class='input-group date'>
+										<input type='text' id="datepicker" class="form-control"  ng-model="claim.claimstate.claimstatuschanged" > 
+											<span class="input-group-addon"> 
+												<span class="glyphicon glyphicon-calendar"></span>
+											</span>
+									</div>
+								</div>							
+
+							<script>
+  								$(function() {
+    							$( '#datepicker' ).datepicker();
+  								});
+  							</script>
 
 							</div>
 						</div>
 					</div>
 				</div>
 			</form>
+			
+			<form class="form-group" role="form">
+				<button class="btn btn-primary btn-lg btn-block" data-toggle="collapse" data-target="#actor_section">Actor Information</button>
+				<div id="actor_section" class="collapse">
+					<div class="panel-group">
+						<div class="panel panel-primary">
+							<div class="panel-body">
+									<label for="actorname">ActorName:</label> 
+									<input class="form-control" id="actorname" type="text" ng-model="claim.actordetails.actorname"> 
+									<label for="actorempid">ActorEmpId:</label> 
+									<input class="form-control" id="actorempid" type="text" ng-model="claim.actordetails.actorempid"> 
+									<label for="actorrole">ActorRole:</label> 
+									<input class="form-control" id="actorrole" type="text" ng-model="claim.actordetails.actorrole"> 
+									<label for="actiondescription">ActionDescription:</label> 
+									<input class="form-control" id="actiondescription" type="text" ng-model="claim.actordetails.actiondescription"> 
+							
+							
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+
+
 			 <button class="btn btn-lg btn-primary btn-block"  type="button" data-toggle="modal" data-target="#myModal-update" 
-			 ng-click="updatePartner();">Update Partner Info</button>
+			 ng-click="updateClaim();">Update Claim Info</button>
 			 
 			 
 			 
@@ -115,10 +129,10 @@
     <div class="modal-content" >
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Partner Info Update</h4>
+        <h4 class="modal-title">Claim Info Update</h4>
       </div>
       <div class="modal-body" >
-      <div class="container" id="partnerUpdateResult">
+      <div class="container" id="claimUpdateResult">
   <!-- Content for this area will be pushed from controller using innerhtml -->
 
       </div>

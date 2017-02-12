@@ -62,25 +62,31 @@ myAPIClientApp_services.factory('clientServices', function($http,$window){
     	  },
     	  
   	  	//Create Claim Function
-  	  	createClaim: function (composedDataInJSON) {
+  	  	createClaim: function (argArray) {
   	   		 
     		 
     		  
     		  //Call the REST API to Create the Claim details
-    		  var apiConnectDetails = $window.local_APIConnect_ConnectionDetails;
+    		 
     		  var apiConnect_Header_Details=$window.headers_for_LocalAPIConnect
     		  
-    		  var REST_URL=apiConnectDetails.host+":"+apiConnectDetails.port+apiConnectDetails.requestpath;
-    		
+    		  var REST_URL= $window.blockChain_REST_URL;
     		  
-    		  console.log("3. REST URL to be Invoked--->"+REST_URL);
-    		  console.log(composedDataInJSON);
+    		  var body = $window.blockChain_Invoke_create_Claim_JSON;
+    		  
+    		  body.params.ctorMsg.args = argArray;
+    		
+    		  console.log("1. Headers--->"+JSON.stringify(apiConnect_Header_Details));
+    		  console.log("2. REST URL to be Invoked--->"+REST_URL);    		  
+    		  console.log("3. Arguments to the function---->" + argArray);
+    		  console.log("4. JSON body--->"+JSON.stringify(body));
+    		  
     		  return $http(
     		    		{
     		    			
     		    			  method: 'POST',
     		    			  headers: apiConnect_Header_Details,
-    		    			  data:composedDataInJSON,
+    		    			  data:body,
     		    			  url: REST_URL
     		    			}		
     		    // To ensure the promises (to make this call sync) I'm handling the Success and failure in controller
@@ -90,25 +96,31 @@ myAPIClientApp_services.factory('clientServices', function($http,$window){
   	  	
   	  	
   	  	//Update Claim Function
-  	  	updateClaim: function (composedDataInJSON) {
+  	  	updateClaim: function (argArray) {
  	   		 
    		 
   		  
   		  //Call the REST API to Create the Claim details
-  		  var apiConnectDetails = $window.local_APIConnect_ConnectionDetails;
+  		 
   		  var apiConnect_Header_Details=$window.headers_for_LocalAPIConnect
   		  
-  		  var REST_URL=apiConnectDetails.host+":"+apiConnectDetails.port+apiConnectDetails.requestpath;
-  		
+  		  var REST_URL= $window.blockChain_REST_URL;
   		  
-  		  console.log("3. REST URL to be Invoked--->"+REST_URL);
-  		  console.log(composedDataInJSON);
+  		  var body = $window.blockChain_Invoke_update_Claim_JSON;
+  		  
+  		  body.params.ctorMsg.args = argArray;
+  		
+  		  console.log("1. Headers--->"+JSON.stringify(apiConnect_Header_Details));
+  		  console.log("2. REST URL to be Invoked--->"+REST_URL);    		  
+  		  console.log("3. Arguments to the function---->" + argArray);
+  		  console.log("4. JSON body--->"+JSON.stringify(body));
+  		  
   		  return $http(
   		    		{
   		    			
-  		    			  method: 'PUT',
+  		    			  method: 'POST',
   		    			  headers: apiConnect_Header_Details,
-  		    			  data:composedDataInJSON,
+  		    			  data:body,
   		    			  url: REST_URL
   		    			}		
   		    // To ensure the promises (to make this call sync) I'm handling the Success and failure in controller
@@ -296,31 +308,9 @@ myAPIClientApp_services.service('utilityServices', function($http,$window){
 	  };
 	  
 	 //Compose data as JSON for POST method 
-	 this.compose_ClaimJSONData=function(Claim){
-		  var data={
-				     "emailid_as_id": Claim[0].emailid,
-				     "addresses": [
-				         {
-				             "addressline1": Claim[0].addresses[0].addressline1,
-				             "addressline2": Claim[0].addresses[0].addressline2,
-				             "addresstype": Claim[0].addresses[0].addresstype,
-				             "city": Claim[0].addresses[0].city,
-				             "state": Claim[0].addresses[0].state,
-				             "country": Claim[0].addresses[0].country,
-				             "pin": Claim[0].addresses[0].pin
-				         }
-				     ],
-				     "dob": Claim[0].dob,
-				     "doctype": "Claim ",
-				     "emailid":  Claim[0].emailid,
-				     "firstname": Claim[0].firstname,
-				     "gender": Claim[0].gender,
-				     "officephone":  Claim[0].officephone,
-				     "lastname": Claim[0].lastname,
-				     "mobilephone": Claim[0].mobilephone,
-				     "organizationname": Claim[0].organizationname
-				 };
-		  //console.log(data);
+	 this.compose_ClaimJSONData=function(claim){
+		  var data=[ claim.claimid, claim.claimdate, claim.claimdescription, claim.claimantdetails.claimantid, claim.claimantdetails.claimantname, claim.claimedamount, claim.approvedamount, claim.claimstate.claimstatus, claim.claimstate.claimstatuschanged, claim.actordetails.actorname, claim.actordetails.actorempid, claim.actordetails.actorrole, claim.actordetails.actiondescription ];
+		  console.log(data);
 		  return data;
 	  }; 
 	

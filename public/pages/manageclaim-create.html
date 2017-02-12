@@ -12,22 +12,15 @@
 						<div class="panel-body">
 							
 							<label for="claimid">ClaimId:</label> 
-								<input class="form-control" id="claimid" type="text" ng-model="claim[0].claimid"> 
+								<input class="form-control" id="claimid" type="text" ng-model="claim.claimid"> 
 							<label for="claimdate">ClaidDate:</label> 
-								<input class="form-control" id="claimdate" type="text" ng-model="claim[0].claimdate"> 
+								<input class="form-control" id="claimdate" type="text" ng-model="claim.claimdate"> 
 							<label for="claimdesription">ClaimDescription:</label>
-								<input class="form-control" id="claimdesription" type="text" ng-model="claim[0].claimdescription" > 
-							<label for="claimantid">ClaimantId:</label> 
-								<input class="form-control" id="claimantid" type="text" ng-model="claim[0].claimantdetails.claimantid">
-							<label for="claimantname">ClaimantName:</label> 
-								<input class="form-control" id="claimantname" type="text" ng-model="claim[0].claimantdetails.claimantname"> 
+								<input class="form-control" id="claimdesription" type="text" ng-model="claim.claimdescription" > 
 							<label for="claimedamount">ClaimedAmount:</label> 
-								<input class="form-control" id="claimedamount" type="text" ng-model="claim[0].claimedamount"> 
+								<input class="form-control" id="claimedamount" type="text" ng-model="claim.claimedamount"> 
 							<label for="approvedamount">ApprovedAmount:</label> 
-								<input class="form-control" id="approvedamount" type="text" ng-model="claim[0].approvedamount"> 
-							
-								 
-						
+								<input class="form-control" id="approvedamount" type="text" ng-model="claim.approvedamount"> 						
 
 						</div>
 					</div>
@@ -43,13 +36,30 @@
 					<div class="panel-group">
 						<div class="panel panel-primary">
 							<div class="panel-body">
+								<label for="claimantid">ClaimantId:</label> 
+								<input class="form-control" id="claimantid" type="text" ng-model="claim.claimantdetails.claimantid">
+								<label for="claimantname">ClaimantName:</label> 
+								<input class="form-control" id="claimantname" type="text" ng-model="claim.claimantdetails.claimantname">					
+							
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+			
+			<form class="form-group" role="form">
+				<button class="btn btn-primary btn-lg btn-block" data-toggle="collapse" data-target="#claimStatus_section">Claim Status Information</button>
+				<div id="claimStatus_section" class="collapse">
+					<div class="panel-group">
+						<div class="panel panel-primary">
+							<div class="panel-body">
 								<label for="claimstatus">ClaimStatus:</label> 
-								<input class="form-control" id="claimstatus" type="text" ng-model="claim[0].claimstate.claimstatus"> 
+								<input class="form-control" id="claimstatus" type="text" ng-model="claim.claimstate.claimstatus"> 
 							
 							<label for="claimstatechanged">ClaimStatusChangedDate:</label> 
 								<div class="form-group">
 									<div class='input-group date'>
-										<input type='text' id="datepicker" class="form-control"  ng-model="claim[0].claimstate.claimstatechanged" > 
+										<input type='text' id="datepicker" class="form-control"  ng-model="claim.claimstate.claimstatuschanged" > 
 											<span class="input-group-addon"> 
 												<span class="glyphicon glyphicon-calendar"></span>
 											</span>
@@ -75,13 +85,13 @@
 						<div class="panel panel-primary">
 							<div class="panel-body">
 									<label for="actorname">ActorName:</label> 
-									<input class="form-control" id="actorname" type="text" ng-model="claim[0].actordetails.actorname"> 
+									<input class="form-control" id="actorname" type="text" ng-model="claim.actordetails.actorname"> 
 									<label for="actorempid">ActorEmpId:</label> 
-									<input class="form-control" id="actorempid" type="text" ng-model="claim[0].actordetails.actorempid"> 
+									<input class="form-control" id="actorempid" type="text" ng-model="claim.actordetails.actorempid"> 
 									<label for="actorrole">ActorRole:</label> 
-									<input class="form-control" id="actorrole" type="text" ng-model="claim[0].actordetails.actorrole"> 
+									<input class="form-control" id="actorrole" type="text" ng-model="claim.actordetails.actorrole"> 
 									<label for="actiondescription">ActionDescription:</label> 
-									<input class="form-control" id="actiondescription" type="text" ng-model="claim[0].actordetails.actiondescription"> 
+									<input class="form-control" id="actiondescription" type="text" ng-model="claim.actordetails.actiondescription"> 
 							
 							
 							</div>
@@ -93,7 +103,7 @@
 
 
 			 <button class="btn btn-lg btn-primary btn-block"  type="button" data-toggle="modal" data-target="#myModal-create" 
-			 ng-click="createPartner();">Submit</button>
+			 ng-click="createClaim();">Submit</button>
 			 
 			 
 			 
@@ -105,10 +115,10 @@
     <div class="modal-content" >
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Partner Create Status</h4>
+        <h4 class="modal-title">Claim Create Status</h4>
       </div>
       <div class="modal-body" >
-      <div class="container" id="partnerCreateResult">
+      <div class="container" id="claimCreateResult">
   <!-- Content for this area will be pushed from controller using innerhtml -->
 
       </div>

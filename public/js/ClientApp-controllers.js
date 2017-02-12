@@ -84,26 +84,37 @@ myAPIClientApp_controllers.controller('manageclaimController-delete', function($
 
 myAPIClientApp_controllers.controller('manageclaimController-update', function($scope,$window,$http,clientServices,utilityServices) {
 	//Claim_datamodel is defined in a separate datamodel.js file 	
-	  $scope.Claim = $window.init_Claim_datamodel;
-	  $scope.inpEmailId='sample_email@xyz.com';
+	  $scope.claim = $window.init_claim_datamodel;
+	  $scope.inpClaimId='C1';
 	  
 	  
 	  $scope.searchForUpdate=function(){
 		  
-		  var varClaim = clientServices.retrieveClaim($scope.inpEmailId);  
+		  var varClaim = clientServices.retrieveClaim($scope.inpClaimId);  
 		  varClaim.then(function (result) {
 			  console.log( result);
 			  var successResponseData = result.data;
+			  
+			  if(successResponseData.result == null ){
+				  console.log("Claim not found!!");
+				  document.getElementById("claimUpdateResult").innerHTML = "Claim Info Not Found!!!! Please try again with valid Claim Id..";
+				  $scope.claim = null;
+			  }
+			  else{
+				  $scope.claim = JSON.parse(successResponseData.result.message);
+				  console.log("Claim--->"+JSON.stringify($scope.claim));
+				  //$scope.Claim = clientServices.populateClaimInfo(successResponseData);
+				  document.getElementById("claimUpdateResult").innerHTML = "Claim Info Found!!!!.. Pls Update..";
+			  }			 
 			 
-			  $scope.Claim = clientServices.populateClaimInfo(successResponseData);
-			  document.getElementById("partnerUpdateResult").innerHTML = "Claim Info Found!!!!.. Pls Update..";
+			  
           }, function(err) {
 	    	 
 	    	  console.log("4. Failed Response from API Call----->"+err);
 		      
 	    	   data= utilityServices.formatResultForDisplay(false,$scope.Claim);
 	    	
-	    	  document.getElementById("partnerUpdateResult").innerHTML = data;
+	    	  document.getElementById("claimUpdateResult").innerHTML = data;
 	        
 	         
 	      }
@@ -113,17 +124,21 @@ myAPIClientApp_controllers.controller('manageclaimController-update', function($
 	  
 	  $scope.updateClaim=function(){
 		  
-		  var composedDataInJSON= utilityServices.compose_ClaimJSONData($scope.Claim);
+		  var composedDataInJSON= utilityServices.compose_ClaimJSONData($scope.claim);
 		  var varClaim = clientServices.updateClaim(composedDataInJSON);  
 		  
 		  varClaim.then(function (result) {
 		        var successResponseData=result.data;
-		        console.log(successResponseData);
-		        document.getElementById("partnerUpdateResult").innerHTML = "Successfully Updated the Claim!!!!";
+		        console.log(successResponseData.result.status);
+		        if(successResponseData.result.status = "OK"){
+		        	document.getElementById("claimUpdateResult").innerHTML = "Successfully Created the Claim!!!!";
+		        }
+		        else
+		        	document.getElementById("claimUpdateResult").innerHTML = "Claim status not OK!!!!";
 
 		  }, function(err) {
 	    	  console.log(err);
-	    	  document.getElementById("partnerUpdateResult").innerHTML = "Oops! Claim Updation failed";
+	    	  document.getElementById("claimUpdateResult").innerHTML = "Oops! Claim Updation failed";
 	      }
 		  
 		  );
@@ -135,21 +150,26 @@ myAPIClientApp_controllers.controller('manageclaimController-update', function($
 
 myAPIClientApp_controllers.controller('manageclaimController-create', function($scope,$window,$http,clientServices,utilityServices) {
 	//Claim_datamodel is defined in a separate datamodel.js file 	
-	  $scope.Claim = $window.Claim_datamodel;
+	  $scope.claim = $window.claim_datamodel;
 	  
 	  $scope.createClaim=function(){
 		  
-		  var composedDataInJSON= utilityServices.compose_ClaimJSONData($scope.Claim);
+		  var composedDataInJSON= utilityServices.compose_ClaimJSONData($scope.claim);
 		  var varClaim = clientServices.createClaim(composedDataInJSON);  
+		  
 		  
 		  varClaim.then(function (result) {
 		        var successResponseData=result.data;
-		        console.log(successResponseData);
-		        document.getElementById("partnerCreateResult").innerHTML = "Successfully Created the Claim!!!!";
+		        console.log(successResponseData.result.status);
+		        if(successResponseData.result.status = "OK"){
+		        	document.getElementById("claimCreateResult").innerHTML = "Successfully Created the Claim!!!!";
+		        }
+		        else
+		        	document.getElementById("claimCreateResult").innerHTML = "Claim status not OK!!!!";
 
 		  }, function(err) {
 	    	  console.log(err);
-	    	  document.getElementById("partnerCreateResult").innerHTML = "Oops! Claim creation failed";
+	    	  document.getElementById("claimCreateResult").innerHTML = "Oops! Claim creation failed";
 	      }
 		  
 		  );
