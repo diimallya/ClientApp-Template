@@ -198,17 +198,29 @@ myAPIClientApp_controllers.controller('manageclaimController-retrieve', function
 			  console.log("SuccessResponseData---------->"+JSON.stringify(successResponseData));
 			 
 			 // $scope.claim = ClaimServices.populateClaimInfo(successResponseData.result.message);
-			  $scope.claim = JSON.parse(successResponseData.result.message);	
+			  //$scope.claim = JSON.parse(successResponseData.result.message);
 			  
-			  console.log("$scope.claim--->"+JSON.stringify($scope.claim));
+
+			  if(successResponseData.error != null ){
+				  console.log("Claim not found!!");
+				  document.getElementById("claimRetrieveResult").innerHTML = "Claim Info Not Found!!!! Please try again with valid Claim Id..";
+				  $scope.claim = null;
+			  }
+			  else{
+				  $scope.claim = JSON.parse(successResponseData.result.message);
+				  console.log("Claim--->"+JSON.stringify($scope.claim));
+				  //$scope.Claim = clientServices.populateClaimInfo(successResponseData);
+				  //document.getElementById("claimUpdateResult").innerHTML = "Claim Info Found!!!!.. Pls Update..";
+				  console.log("$scope.claim--->"+JSON.stringify($scope.claim));			  
+				  	  
+				  data= utilityServices.formatResultForDisplay(true,$scope.claim);
+				  document.getElementById("claimRetrieveResult").innerHTML = data;
+			  }			 
+			 
 			  
-			  console.log("$scope.claim[0].claimid---->"+$scope.claim.claimid);
-			  
-			   data= utilityServices.formatResultForDisplay(true,$scope.claim);
-			  document.getElementById("claimRetrieveResult").innerHTML = data;
           }, function(err) {
 	    	 
-	    	  console.log("4. Failed Response from API Call----->"+err);
+	    	  console.log("Claim Info Not Found!!!! Please try again with valid Claim Id.."+err);
 		      
 	    	   data= utilityServices.formatResultForDisplay(false,$scope.claim);
 	    	

@@ -109,6 +109,7 @@ myAPIClientApp_services.factory('clientServices', function($http,$window){
   		  var body = $window.blockChain_Invoke_update_Claim_JSON;
   		  
   		  body.params.ctorMsg.args = argArray;
+  		  body = JSON.stringify(body);
   		
   		  console.log("1. Headers--->"+JSON.stringify(apiConnect_Header_Details));
   		  console.log("2. REST URL to be Invoked--->"+REST_URL);    		  

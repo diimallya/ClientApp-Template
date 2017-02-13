@@ -59,7 +59,7 @@
 		            "name": "d6d9a06dc1397f2c0535babaa779bdb7601e88829f82d26dbe7cc09f2afb140a05bd68ce7d1b5213e30e63bacecb5d40729da49629c8053668e6b0e4ca9bf13e"
 		        },
 		        "ctorMsg": {
-		            "function": "create_claim",
+		            "function": "create_Claim",
 		            "args": [
 		                ""
 		            ]
@@ -79,7 +79,7 @@
 		            "name": "d6d9a06dc1397f2c0535babaa779bdb7601e88829f82d26dbe7cc09f2afb140a05bd68ce7d1b5213e30e63bacecb5d40729da49629c8053668e6b0e4ca9bf13e"
 		        },
 		        "ctorMsg": {
-		            "function": "update_claim",
+		            "function": "update_Claim",
 		            "args": [
 		                ""
 		            ]

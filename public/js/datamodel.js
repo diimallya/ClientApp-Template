@@ -1,4 +1,4 @@
-var claim_datamodel =[
+var claim_datamodel =
 	{
 		"claimid": "C1", 
 		"claimdate": "31-Jan-2017", 
@@ -9,9 +9,9 @@ var claim_datamodel =[
 		"claimstate": {"claimstatus": "Submitted", "claimstatuschanged": "31-Jan-2017"},
 		"actordetails": {"actorempid": "1234", "actorname": "Gowtham", "actorrole": "Employee", "actiondescription": "Engineer"}
 	}
-]	
+	
 
-var init_claim_datamodel=[
+var init_claim_datamodel=
 	{
 		"claimid": "", 
 		"claimdate": "", 
@@ -22,7 +22,7 @@ var init_claim_datamodel=[
 		"claimstate": {},
 		"actordetails": {}
 	}
-]
+
 
 var partner_datamodel = [
 	                  { firstname: 'gowtham',
